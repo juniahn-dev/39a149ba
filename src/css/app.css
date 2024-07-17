@@ -1,25 +1,31 @@
 #app {
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #app .container {
-  width: 376px;
-  height: 666px;
+  position: relative;
+
+  overflow: hidden;
   z-index: 100;
 
-  background: white;
+  width: 376px;
+  height: 666px;
+  background: rgba(255, 255, 255, 0.916);
   border-radius: 3px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, .9);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
 }
 
 #app .container-view {
-  padding: 20px;
-}
+  overflow-y: scroll;
 
+  padding: 20px;
+  height: calc(100% - 152px);
+}

@@ -1,0 +1,26 @@
+.navigator {
+  position: absolute;
+  bottom: 0;
+
+  width: -webkit-fill-available;
+  background-color: #fff;
+  padding: 0 20px;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      padding: 15px 0;
+
+      &#here {
+        border-bottom: 2px solid #45c122;
+      }
+
+      img {
+        width: 18px;
+      }
+    }
+  }
+}

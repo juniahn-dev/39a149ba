@@ -1,12 +1,9 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import "./index.css";
+
+import React, { useState } from "react";
 
 const Header = () => {
-  const { pathname } = useLocation();
-
-  const targetPageLink = (target) => {
-    if (pathname === target) return "here";
-  };
+  const [target, setTarget] = useState("inbox");
 
   return (
     <header>
@@ -70,11 +67,17 @@ const Header = () => {
           </g>
         </svg>
         <ul>
-          <li id={targetPageLink("/")}>
-            <Link to="/">Inbox</Link>
+          <li
+            onClick={() => setTarget("inbox")}
+            className={target === "inbox" ? "here" : null}
+          >
+            Inbox
           </li>
-          <li id={targetPageLink("/calls")}>
-            <Link to="/calls">All calls</Link>
+          <li
+            onClick={() => setTarget("archive")}
+            className={target === "archive" ? "here" : null}
+          >
+            Archive
           </li>
           <li>
             <img src="./src/assets/SettingIcon.png" />

@@ -1,3 +1,4 @@
+import Navigator from "../Navigator";
 import Header from "../Header";
 
 const Wrapper = ({ children }) => {
@@ -5,6 +6,7 @@ const Wrapper = ({ children }) => {
     <div className="container">
       <Header />
       <div className="container-view">{children}</div>
+      <Navigator />
     </div>
   );
 };

@@ -3,17 +3,19 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Inbox from "./pages/Inbox";
 import Calls from "./pages/Calls";
+import { RecoilRoot } from "recoil";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Inbox />} />
-        <Route path="/calls" element={<Calls />} />
+    <RecoilRoot>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Inbox />} />
 
-        <Route path="*" element={<Inbox />} />
-      </Routes>
-    </BrowserRouter>
+          <Route path="*" element={<Inbox />} />
+        </Routes>
+      </BrowserRouter>
+    </RecoilRoot>
   );
 };
 

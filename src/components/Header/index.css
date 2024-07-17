@@ -24,13 +24,15 @@ header nav ul {
   height: 100%;
 
   li {
+    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
     height: 100%;
 
-    &#here {
+    &.here {
       border-bottom: 2px solid red;
     }
 
