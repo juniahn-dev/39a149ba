@@ -1,16 +1,18 @@
 import { useMemo, useState } from "react";
-import usePatchArchive from "../../hooks/usePatchArchive";
+import usePatchArchive from "hooks/usePatchArchive";
 import "./index.css";
 import clsx from "clsx";
 import dayjs from "dayjs";
-import ReceiveIcon from "../../assets/ReceiveIcon.png";
-import SendIcon from "../../assets/SendIcon.png";
-import BackIcon from "../../assets/BackIcon.png";
-import ArchiveIcon from "../../assets/ArchiveIcon.png";
-import UnArchiveIcon from "../../assets/UnarchiveIcon.png";
-import DefaultUserIcon from "../../assets/DefaultUserIcon.png";
+import ReceiveIcon from "assets/ReceiveIcon.png";
+import SendIcon from "assets/SendIcon.png";
+import BackIcon from "assets/BackIcon.png";
+import ArchiveIcon from "assets/ArchiveIcon.png";
+import UnArchiveIcon from "assets/UnarchiveIcon.png";
+import DefaultUserIcon from "assets/DefaultUserIcon.png";
+import { useCallTarget } from "hooks/stores/callTarget";
 
 export default function CallCard({ activity }) {
+  const { callTarget } = useCallTarget();
   const [modalOn, setModalOn] = useState(false);
 
   const { patchArchive } = usePatchArchive();
@@ -26,13 +28,21 @@ export default function CallCard({ activity }) {
     return "Outgoing";
   }, [activity]);
 
+  const callPatch = () => {
+    patchArchive(`/activities/${activity.id}`, !activity.is_archived);
+
+    if (callTarget === "archive") {
+      setModalOn(false);
+    }
+  };
+
   return (
     <>
       <div className="call-card-wrapper" onClick={() => setModalOn(!modalOn)}>
         {activity.direction === "inbound" ? (
-          <img src={ReceiveIcon} />
+          <img src={ReceiveIcon} alt="receive-icon" />
         ) : (
-          <img src={SendIcon} />
+          <img src={SendIcon} alt="send-icon" />
         )}
         <div className="call-from-wrapper">
           <strong
@@ -55,20 +65,17 @@ export default function CallCard({ activity }) {
               className="header-icon"
               onClick={() => setModalOn(false)}
               src={BackIcon}
+              alt="back-icon"
             />
             <img
               className="header-icon"
-              onClick={() =>
-                patchArchive(
-                  `/activities/${activity.id}`,
-                  !activity.is_archived
-                )
-              }
+              onClick={() => callPatch()}
               src={activity.is_archived ? ArchiveIcon : UnArchiveIcon}
+              alt="activity-icon"
             />
           </div>
           <div className="header-info">
-            <img src={DefaultUserIcon} />
+            <img src={DefaultUserIcon} alt="default-user-icon" />
             <h4>{activity.via}</h4>
             <h2>{activity.from}</h2>
           </div>

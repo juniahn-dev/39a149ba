@@ -9,7 +9,7 @@
     height: 100%;
     margin-top: 200px;
 
-    color: #a6a6a6;
+    color: var(---gray-color);
   }
 }
 
@@ -23,7 +23,7 @@
 
     width: fit-content;
 
-    color: #45c122;
+    color: var(--green-color);
     font-size: 12px;
 
     img {
@@ -47,7 +47,7 @@
 
   margin-bottom: 15px;
 
-  color: #a6a6a6;
+  color: var(---gray-color);
   font-size: 13px;
   font-weight: 500;
 

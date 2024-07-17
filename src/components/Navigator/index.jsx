@@ -1,30 +1,47 @@
 import "./index.css";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
-import PhoneIcon from "../../assets/PhoneIcon.png";
-import UserIcon from "../../assets/UserIcon.png";
-import GearIcon from "../../assets/GearIcon.png";
-import ButtonIcon from "../../assets/ButtonIcon.png";
+import PhoneIcon from "assets/PhoneIcon.png";
+import UserIcon from "assets/UserIcon.png";
+import GearIcon from "assets/GearIcon.png";
+import ButtonIcon from "assets/ButtonIcon.png";
+import useFetchActivities from "hooks/useFetchActivities";
 
 const Navigator = () => {
   const { pathname } = useLocation();
+  const { activities } = useFetchActivities();
 
   const targetPageLink = (target) => {
     if (pathname === target) return "here";
   };
 
+  const missedCallCount = useMemo(() => {
+    let missedCallCount = 0;
+
+    activities.forEach((activity) => {
+      activity.items.forEach((item) => {
+        if (item.call_type === "missed") {
+          missedCallCount++;
+        }
+      });
+    });
+
+    return missedCallCount;
+  }, [activities]);
+
   return (
     <nav className="navigator">
       <ul>
         <li id={targetPageLink("/")}>
-          <Link to="/">
-            <img src={PhoneIcon} />
+          <Link className="navigator-phone" to="/">
+            <img src={PhoneIcon} alt="phone-icon" />
+            {Number(missedCallCount) > 0 && <span>{missedCallCount}</span>}
           </Link>
         </li>
         <li id={targetPageLink("/user")}>
           <Link to="/user">
-            <img src={UserIcon} />
+            <img src={UserIcon} alt="user-icon" />
           </Link>
         </li>
         <li>
@@ -47,12 +64,12 @@ const Navigator = () => {
         </li>
         <li id={targetPageLink("/gear")}>
           <Link to="/gear">
-            <img src={GearIcon} />
+            <img src={GearIcon} alt="gear-icon" />
           </Link>
         </li>
         <li id={targetPageLink("/record")}>
           <Link to="/record">
-            <img src={ButtonIcon} />
+            <img src={ButtonIcon} alt="record-icon" />
           </Link>
         </li>
       </ul>

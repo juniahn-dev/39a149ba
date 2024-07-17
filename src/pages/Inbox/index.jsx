@@ -1,14 +1,14 @@
 import "./index.css";
 
 import { useEffect, useMemo } from "react";
-import Wrapper from "../../components/Wrapper";
-import useFetchActivities from "../../hooks/useFetchActivities";
-import CallCard from "../../components/CallCard";
-import { useCallTarget } from "../../hooks/stores/callTarget";
-import usePatchArchive from "../../hooks/usePatchArchive";
 import { isEmpty } from "ramda";
 import clsx from "clsx";
-import ArchiveColorIcon from "../../assets/ArchiveColorIcon.png";
+import Wrapper from "components/Wrapper";
+import useFetchActivities from "hooks/useFetchActivities";
+import usePatchArchive from "hooks/usePatchArchive";
+import { useCallTarget } from "hooks/stores/callTarget";
+import CallCard from "components/CallCard";
+import ArchiveColorIcon from "assets/ArchiveColorIcon.png";
 
 export default function Inbox() {
   const { patchArchive } = usePatchArchive();
@@ -61,7 +61,7 @@ export default function Inbox() {
               onClick={() => allUnarchive()}
               className="archive-all-calls"
             >
-              <img src={ArchiveColorIcon} />
+              <img src={ArchiveColorIcon} alt="archive-color" />
               Archive all
             </button>
           </div>

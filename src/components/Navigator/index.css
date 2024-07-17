@@ -3,7 +3,7 @@
   bottom: 0;
 
   width: -webkit-fill-available;
-  background-color: #fff;
+  background-color: var(--white-color);
   padding: 0 20px;
 
   ul {
@@ -15,11 +15,34 @@
       padding: 15px 0;
 
       &#here {
-        border-bottom: 2px solid #45c122;
+        border-bottom: 2px solid var(--green-color);
       }
 
       img {
         width: 18px;
+      }
+
+      .navigator-phone {
+        position: relative;
+
+        span {
+          position: absolute;
+          top: -9px;
+          right: -8px;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          width: 10px;
+          height: 10px;
+          background-color: var(--red-color);
+          border-radius: 50%;
+          padding: 3px;
+
+          color: var(--white-color);
+          font-size: 13px;
+        }
       }
 
       .middle-phone {
@@ -32,9 +55,9 @@
 
           width: 60px;
           height: 60px;
-          background-color: #fff;
+          background-color: var(--white-color);
           border-radius: 50%;
-          border: 1px solid rgba(0, 0, 0, 0.1);
+          border: 1px solid var(--border-color);
         }
 
         .small-circle-phone {
@@ -48,7 +71,7 @@
 
           width: 52px;
           height: 52px;
-          background-color: #45c122;
+          background-color: var(--green-color);
           border-radius: 50%;
 
           .dot-wrapper {
@@ -60,7 +83,7 @@
               width: 5px;
               height: 5px;
               border-radius: 50%;
-              background-color: #fff;
+              background-color: var(--white-color);
             }
           }
         }

@@ -1,4 +1,4 @@
-import fetchData from "../libs/fetchData";
+import fetchData from "libs/fetchData";
 import useFetchActivities from "./useFetchActivities";
 
 const usePatchArchive = () => {

@@ -44,3 +44,12 @@ button {
   padding: 0;
   overflow: visible;
 }
+
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --green-color: #45c122;
+  --red-color: #ff2828;
+  --border-color: rgba(0, 0, 0, 0.1);
+  ---gray-color: #a6a6a6;
+}

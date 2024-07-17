@@ -1,5 +1,5 @@
-import Navigator from "../Navigator";
-import Header from "../Header";
+import Header from "components/Header";
+import Navigator from "components/Navigator";
 
 const Wrapper = ({ children }) => {
   return (

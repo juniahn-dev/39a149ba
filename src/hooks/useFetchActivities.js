@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
-import fetchData from "../libs/fetchData";
 import { useActivities } from "./stores/activities";
+import fetchData from "libs/fetchData";
 
 const orderingTime = (data) => {
   const groupedData = data.reduce((acc, item) => {
