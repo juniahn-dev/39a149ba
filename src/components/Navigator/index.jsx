@@ -15,12 +15,12 @@ const Navigator = () => {
       <ul>
         <li id={targetPageLink("/")}>
           <Link to="/">
-            <img src="./src/assets/PhoneIcon.png" />
+            <img src="../../assets/PhoneIcon.png" />
           </Link>
         </li>
         <li id={targetPageLink("/user")}>
           <Link to="/user">
-            <img src="./src/assets/UserIcon.png" />
+            <img src="../../assets/UserIcon.png" />
           </Link>
         </li>
         <li>
@@ -43,12 +43,12 @@ const Navigator = () => {
         </li>
         <li id={targetPageLink("/gear")}>
           <Link to="/gear">
-            <img src="./src/assets/GearIcon.png" />
+            <img src="../../assets/GearIcon.png" />
           </Link>
         </li>
         <li id={targetPageLink("/record")}>
           <Link to="/record">
-            <img src="./src/assets/ButtonIcon.png" />
+            <img src="../../assets/ButtonIcon.png" />
           </Link>
         </li>
       </ul>

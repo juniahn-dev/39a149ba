@@ -81,7 +81,7 @@ const Header = () => {
               Archive
             </li>
           </ul>
-          <img src="./src/assets/SettingIcon.png" />
+          <img src="../../assets/SettingIcon.png" />
         </div>
       </nav>
     </header>

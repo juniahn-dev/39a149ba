@@ -12,8 +12,8 @@ export const useActivities = (initValue) => {
   const [activities, setActivities] = useRecoilState(activitiesState);
 
   useEffect(() => {
-    !isNil(initValue) && setUser(initValue);
-  }, [initValue]);
+    !isNil(initValue) && setActivities(initValue);
+  }, [initValue, setActivities]);
 
   return {
     activities,

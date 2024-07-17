@@ -24,9 +24,9 @@ export default function CallCard({ activity }) {
     <>
       <div className="call-card-wrapper" onClick={() => setModalOn(!modalOn)}>
         {activity.direction === "inbound" ? (
-          <img src="./src/assets/ReceiveIcon.png" />
+          <img src="../../assets/ReceiveIcon.png" />
         ) : (
-          <img src="./src/assets/SendIcon.png" />
+          <img src="../../assets/SendIcon.png" />
         )}
         <div className="call-from-wrapper">
           <strong
@@ -48,7 +48,7 @@ export default function CallCard({ activity }) {
             <img
               className="header-icon"
               onClick={() => setModalOn(false)}
-              src="./src/assets/BackIcon.png"
+              src="../../assets/BackIcon.png"
             />
             <img
               className="header-icon"
@@ -60,13 +60,13 @@ export default function CallCard({ activity }) {
               }
               src={
                 activity.is_archived
-                  ? "./src/assets/ArchiveIcon.png"
-                  : "./src/assets/UnArchiveIcon.png"
+                  ? "../../assets/ArchiveIcon.png"
+                  : "../../assets/UnArchiveIcon.png"
               }
             />
           </div>
           <div className="header-info">
-            <img src="./src/assets/DefaultUserIcon.png" />
+            <img src="../../assets/DefaultUserIcon.png" />
             <h4>{activity.via}</h4>
             <h2>{activity.from}</h2>
           </div>
