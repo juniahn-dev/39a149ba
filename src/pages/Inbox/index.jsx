@@ -1,21 +1,38 @@
 import "./index.css";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Wrapper from "../../components/Wrapper";
 import useFetchActivities from "../../hooks/useFetchActivities";
 import CallCard from "../../components/CallCard";
+import { useCallTarget } from "../../hooks/stores/callTarget";
 
 export default function Inbox() {
   const { activities, fetchActivities } = useFetchActivities();
+  const { callTarget } = useCallTarget();
 
   useEffect(() => {
-    fetchActivities(`${process.env.REACT_APP_AIRCALL_ENDPOINT}/activities`);
+    fetchActivities("/activities");
   }, []);
+
+  const filteredActivities = useMemo(() => {
+    if (callTarget === "archive") {
+      return activities
+        .map((activity) => {
+          const filteredItems = activity.items.filter(
+            (item) => item.is_archived
+          );
+          return { ...activity, items: filteredItems };
+        })
+        .filter((activity) => activity.items.length > 0);
+    }
+
+    return activities;
+  }, [callTarget, activities]);
 
   return (
     <Wrapper>
       <div className="inbox-wrapper">
-        {activities.map((v) => {
+        {filteredActivities.map((v) => {
           const { date, items } = v;
 
           return (

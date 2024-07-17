@@ -5,6 +5,8 @@ body,
 h1,
 h2,
 h3,
+h4,
+p,
 ul,
 li {
   margin: 0;
@@ -18,7 +20,6 @@ body {
   background: #233142;
 
   font-family: "Rubik", sans-serif;
-  font-size: 13px;
   color: #333333;
   line-height: 1;
 }
@@ -40,6 +41,4 @@ button {
   border-radius: 0;
   padding: 0;
   overflow: visible;
-
-  color: #fff;
 }

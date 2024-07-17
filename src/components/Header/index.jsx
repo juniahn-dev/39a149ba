@@ -1,16 +1,16 @@
+import { useCallTarget } from "../../hooks/stores/callTarget";
 import "./index.css";
 
-import React, { useState } from "react";
+import React from "react";
 
 const Header = () => {
-  const [target, setTarget] = useState("inbox");
+  const { callTarget, setCallTarget } = useCallTarget();
 
   return (
     <header>
       <nav>
         <svg
-          width="120px"
-          height="168px"
+          width="100px"
           viewBox="0 0 486 168"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -66,23 +66,23 @@ const Header = () => {
             />
           </g>
         </svg>
-        <ul>
-          <li
-            onClick={() => setTarget("inbox")}
-            className={target === "inbox" ? "here" : null}
-          >
-            Inbox
-          </li>
-          <li
-            onClick={() => setTarget("archive")}
-            className={target === "archive" ? "here" : null}
-          >
-            Archive
-          </li>
-          <li>
-            <img src="./src/assets/SettingIcon.png" />
-          </li>
-        </ul>
+        <div className="header-side-wrapper">
+          <ul>
+            <li
+              onClick={() => setCallTarget("inbox")}
+              className={callTarget === "inbox" ? "here" : null}
+            >
+              Inbox
+            </li>
+            <li
+              onClick={() => setCallTarget("archive")}
+              className={callTarget === "archive" ? "here" : null}
+            >
+              Archive
+            </li>
+          </ul>
+          <img src="./src/assets/SettingIcon.png" />
+        </div>
       </nav>
     </header>
   );

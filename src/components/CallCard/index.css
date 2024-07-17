@@ -1,4 +1,7 @@
 .call-card-wrapper {
+  cursor: pointer;
+  position: relative;
+
   display: grid;
   grid-template-columns: 1fr 6fr 1fr;
   align-items: center;
@@ -9,8 +12,20 @@
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.375);
+  }
+
   img {
     width: 23px;
+  }
+
+  .archive-icon {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    width: 15px;
   }
 
   .call-from-wrapper {
@@ -18,11 +33,10 @@
     flex-direction: column;
     gap: 5px;
 
-    font-size: 10px;
+    font-size: 13px;
     color: #a6a6a6;
 
     strong {
-      font-size: 13px;
       font-weight: 500;
       color: #000;
     }
@@ -32,7 +46,7 @@
     padding-left: 10px;
     border-left: 1px dotted rgba(0, 0, 0, 0.1);
 
-    font-size: 10px;
+    font-size: 13px;
     color: #a6a6a6;
 
     span {
@@ -44,6 +58,91 @@
       border-bottom-left-radius: 3px;
 
       font-weight: 500;
+    }
+  }
+}
+
+.modal-wrapper {
+  visibility: hidden;
+  z-index: 999;
+
+  position: absolute;
+  top: 0;
+  left: 376px;
+
+  transition: all 300ms ease 0s;
+
+  background-color: #fff;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+
+  &.on-modal {
+    visibility: visible;
+    left: 0;
+  }
+
+  .header-wrapper {
+    background: linear-gradient(to bottom, #d0d0d0 0%, #fafafa 100%);
+    padding-bottom: 15px;
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .header-icon {
+        cursor: pointer;
+
+        margin: 15px;
+        margin-bottom: 0;
+        width: 30px;
+
+        &.archive {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .header-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      img {
+        width: 60px;
+        border-radius: 50%;
+      }
+
+      h2,
+      h4 {
+        font-weight: 500;
+      }
+
+      h4 {
+        font-size: 15px;
+        color: #a6a6a6;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    margin: 15px;
+
+    .content-card {
+      background-color: #f3f3f3;
+      padding: 15px;
+      border-radius: 8px;
     }
   }
 }
