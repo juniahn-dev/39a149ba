@@ -9,7 +9,7 @@ export default function Inbox() {
   const { activities, fetchActivities } = useFetchActivities();
 
   useEffect(() => {
-    fetchActivities(`https://aircall-backend.onrender.com/activities`);
+    fetchActivities(`${process.env.REACT_APP_AIRCALL_ENDPOINT}/activities`);
   }, []);
 
   return (

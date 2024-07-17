@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Inbox from "./pages/Inbox";
-import Calls from "./pages/Calls";
 import { RecoilRoot } from "recoil";
 
 const App = () => {

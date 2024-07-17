@@ -35,10 +35,7 @@ module.exports = {
       filename: "./index.html",
     }),
     new Dotenv({
-      path: dotenvFilename,
-    }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(env.NODE_ENV),
+      path: ".env",
     }),
   ],
 };
