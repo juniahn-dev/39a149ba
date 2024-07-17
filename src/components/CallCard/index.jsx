@@ -3,6 +3,12 @@ import usePatchArchive from "../../hooks/usePatchArchive";
 import "./index.css";
 import clsx from "clsx";
 import dayjs from "dayjs";
+import ReceiveIcon from "../../assets/ReceiveIcon.png";
+import SendIcon from "../../assets/SendIcon.png";
+import BackIcon from "../../assets/BackIcon.png";
+import ArchiveIcon from "../../assets/ArchiveIcon.png";
+import UnArchiveIcon from "../../assets/UnarchiveIcon.png";
+import DefaultUserIcon from "../../assets/DefaultUserIcon.png";
 
 export default function CallCard({ activity }) {
   const [modalOn, setModalOn] = useState(false);
@@ -24,9 +30,9 @@ export default function CallCard({ activity }) {
     <>
       <div className="call-card-wrapper" onClick={() => setModalOn(!modalOn)}>
         {activity.direction === "inbound" ? (
-          <img src="../../assets/ReceiveIcon.png" />
+          <img src={ReceiveIcon} />
         ) : (
-          <img src="../../assets/SendIcon.png" />
+          <img src={SendIcon} />
         )}
         <div className="call-from-wrapper">
           <strong
@@ -48,7 +54,7 @@ export default function CallCard({ activity }) {
             <img
               className="header-icon"
               onClick={() => setModalOn(false)}
-              src="../../assets/BackIcon.png"
+              src={BackIcon}
             />
             <img
               className="header-icon"
@@ -58,15 +64,11 @@ export default function CallCard({ activity }) {
                   !activity.is_archived
                 )
               }
-              src={
-                activity.is_archived
-                  ? "../../assets/ArchiveIcon.png"
-                  : "../../assets/UnArchiveIcon.png"
-              }
+              src={activity.is_archived ? ArchiveIcon : UnArchiveIcon}
             />
           </div>
           <div className="header-info">
-            <img src="../../assets/DefaultUserIcon.png" />
+            <img src={DefaultUserIcon} />
             <h4>{activity.via}</h4>
             <h2>{activity.from}</h2>
           </div>

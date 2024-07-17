@@ -2,6 +2,10 @@ import "./index.css";
 
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import PhoneIcon from "../../assets/PhoneIcon.png";
+import UserIcon from "../../assets/UserIcon.png";
+import GearIcon from "../../assets/GearIcon.png";
+import ButtonIcon from "../../assets/ButtonIcon.png";
 
 const Navigator = () => {
   const { pathname } = useLocation();
@@ -15,12 +19,12 @@ const Navigator = () => {
       <ul>
         <li id={targetPageLink("/")}>
           <Link to="/">
-            <img src="../../assets/PhoneIcon.png" />
+            <img src={PhoneIcon} />
           </Link>
         </li>
         <li id={targetPageLink("/user")}>
           <Link to="/user">
-            <img src="../../assets/UserIcon.png" />
+            <img src={UserIcon} />
           </Link>
         </li>
         <li>
@@ -43,12 +47,12 @@ const Navigator = () => {
         </li>
         <li id={targetPageLink("/gear")}>
           <Link to="/gear">
-            <img src="../../assets/GearIcon.png" />
+            <img src={GearIcon} />
           </Link>
         </li>
         <li id={targetPageLink("/record")}>
           <Link to="/record">
-            <img src="../../assets/ButtonIcon.png" />
+            <img src={ButtonIcon} />
           </Link>
         </li>
       </ul>

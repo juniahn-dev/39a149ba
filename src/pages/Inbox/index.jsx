@@ -8,6 +8,7 @@ import { useCallTarget } from "../../hooks/stores/callTarget";
 import usePatchArchive from "../../hooks/usePatchArchive";
 import { isEmpty } from "ramda";
 import clsx from "clsx";
+import ArchiveColorIcon from "../../assets/ArchiveColorIcon.png";
 
 export default function Inbox() {
   const { patchArchive } = usePatchArchive();
@@ -60,7 +61,7 @@ export default function Inbox() {
               onClick={() => allUnarchive()}
               className="archive-all-calls"
             >
-              <img src="./src/assets/ArchiveColorIcon.png" />
+              <img src={ArchiveColorIcon} />
               Archive all
             </button>
           </div>

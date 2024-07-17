@@ -2,6 +2,7 @@ import { useCallTarget } from "../../hooks/stores/callTarget";
 import "./index.css";
 
 import React from "react";
+import SettingIcon from "../../assets/SettingIcon.png";
 
 const Header = () => {
   const { callTarget, setCallTarget } = useCallTarget();
@@ -81,7 +82,7 @@ const Header = () => {
               Archive
             </li>
           </ul>
-          <img src="../../assets/SettingIcon.png" />
+          <img src={SettingIcon} />
         </div>
       </nav>
     </header>
