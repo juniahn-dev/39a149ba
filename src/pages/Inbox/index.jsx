@@ -34,12 +34,11 @@ export default function Inbox() {
     return activities;
   }, [callTarget, activities]);
 
-  const allUnarchive = () => {
+  const allHandleArchive = () => {
     try {
       filteredActivities.map(({ items }) =>
-        items.map(
-          (item) =>
-            !item.is_archived && patchArchive(`/activities/${item.id}`, true)
+        items.map((item) =>
+          patchArchive(`/activities/${item.id}`, callTarget !== "archive")
         )
       );
     } catch (err) {
@@ -55,39 +54,42 @@ export default function Inbox() {
           "inbox-wrapper"
         )}
       >
-        {callTarget !== "archive" && (
-          <div className="archive-btn">
-            <button
-              onClick={() => allUnarchive()}
-              className="archive-all-calls"
-            >
-              <img src={ArchiveColorIcon} alt="archive-color" />
-              Archive all
-            </button>
-          </div>
-        )}
         {isEmpty(filteredActivities) && (
           <div className="empty-container">{`Nothing in ${callTarget}`}</div>
         )}
-        {!isEmpty(filteredActivities) &&
-          filteredActivities.map((v) => {
-            const { date, items } = v;
-
-            return (
-              <div key={date} className="activity-wrapper">
-                <div className="activity-date">
-                  <div className="line"></div>
-                  {date}
-                  <div className="line"></div>
-                </div>
-                <div className="activity-cards">
-                  {items.map((item, idx) => (
-                    <CallCard key={idx} activity={item} />
-                  ))}
-                </div>
+        {!isEmpty(filteredActivities) && (
+          <>
+            {!isEmpty(filteredActivities) && (
+              <div className="archive-btn">
+                <button
+                  onClick={() => allHandleArchive()}
+                  className="archive-all-calls"
+                >
+                  <img src={ArchiveColorIcon} alt="archive-color" />
+                  {callTarget !== "archive" ? "Archive" : "Unarchive"} all
+                </button>
               </div>
-            );
-          })}
+            )}
+            {filteredActivities.map((v) => {
+              const { date, items } = v;
+
+              return (
+                <div key={date} className="activity-wrapper">
+                  <div className="activity-date">
+                    <div className="line"></div>
+                    {date}
+                    <div className="line"></div>
+                  </div>
+                  <div className="activity-cards">
+                    {items.map((item, idx) => (
+                      <CallCard key={idx} activity={item} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </>
+        )}
       </div>
     </Wrapper>
   );
