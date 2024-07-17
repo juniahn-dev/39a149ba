@@ -1,14 +1,13 @@
 .call-card-wrapper {
   cursor: pointer;
-  position: relative;
 
   display: grid;
-  grid-template-columns: 1fr 6fr 1fr;
+  grid-template-columns: 1fr 4.5fr 59.2px 1fr;
   align-items: center;
 
+  background-color: #fafafa;
   width: -webkit-fill-available;
-  padding: 12px 15px;
-  padding-right: 0;
+  padding: 14px 15px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 
@@ -17,15 +16,7 @@
   }
 
   img {
-    width: 23px;
-  }
-
-  .archive-icon {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-
-    width: 15px;
+    width: 24px;
   }
 
   .call-from-wrapper {
@@ -33,31 +24,48 @@
     flex-direction: column;
     gap: 5px;
 
-    font-size: 13px;
+    font-size: 12px;
     color: #a6a6a6;
+    font-weight: 400;
 
     strong {
+      font-size: 14px;
       font-weight: 500;
       color: #000;
+
+      &.missed-call {
+        color: #ff2828;
+      }
+    }
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      max-width: 153px;
     }
   }
 
+  .archived {
+    margin-right: 5px;
+
+    font-size: 12px;
+    color: #a6a6a6;
+  }
+
   .call-time-wrapper {
-    padding-left: 10px;
+    padding-left: 5px;
     border-left: 1px dotted rgba(0, 0, 0, 0.1);
 
     font-size: 13px;
     color: #a6a6a6;
 
     span {
-      margin-left: 10px;
-      padding: 5px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-right: 0;
-      border-top-left-radius: 3px;
-      border-bottom-left-radius: 3px;
+      margin-left: 6px;
 
       font-weight: 500;
+      font-size: 10px;
     }
   }
 }
@@ -95,12 +103,8 @@
 
         margin: 15px;
         margin-bottom: 0;
-        width: 30px;
-
-        &.archive {
-          width: 20px;
-          height: 20px;
-        }
+        width: 25px;
+        opacity: calc(0.5);
       }
     }
 
@@ -143,6 +147,33 @@
       background-color: #f3f3f3;
       padding: 15px;
       border-radius: 8px;
+
+      p {
+        margin-bottom: 10px;
+
+        font-size: 15px;
+      }
+
+      .call-content {
+        display: flex;
+        gap: 10px;
+
+        font-size: 13px;
+
+        .call-info-content {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+
+          span {
+            color: #a6a6a6;
+
+            &.missed {
+              color: #ff2828;
+            }
+          }
+        }
+      }
     }
   }
 }

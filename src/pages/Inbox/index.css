@@ -1,7 +1,37 @@
 .inbox-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
+
+  &.empty-wrapper {
+    align-items: center;
+
+    height: 100%;
+    margin-top: 200px;
+
+    color: #a6a6a6;
+  }
+}
+
+.archive-btn {
+  display: flex;
+  justify-content: flex-end;
+
+  .archive-all-calls {
+    display: flex;
+    align-items: center;
+
+    width: fit-content;
+
+    color: #45c122;
+    font-size: 12px;
+
+    img {
+      width: 16px;
+      height: 16px;
+      margin-right: 3px;
+    }
+  }
 }
 
 .activity-wrapper {
@@ -19,12 +49,12 @@
 
   color: #a6a6a6;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 500;
 
   .line {
     flex: 1;
 
-    width: 160px;
+    width: 150px;
     border-bottom: 1px dotted #b0b0b0;
     margin: 0 10px;
   }
@@ -33,7 +63,13 @@
 .activity-cards {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 
   width: 100%;
+}
+
+.empty-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

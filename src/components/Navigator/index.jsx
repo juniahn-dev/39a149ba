@@ -24,7 +24,22 @@ const Navigator = () => {
           </Link>
         </li>
         <li>
-          <Link to="/phone">...</Link>
+          <Link className="middle-phone" to="/phone">
+            <div className="circle-phone"></div>
+            <div className="small-circle-phone">
+              <div className="dot-wrapper">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+              </div>
+            </div>
+          </Link>
         </li>
         <li id={targetPageLink("/gear")}>
           <Link to="/gear">

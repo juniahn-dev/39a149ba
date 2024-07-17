@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import usePatchArchive from "../../hooks/usePatchArchive";
 import "./index.css";
 import clsx from "clsx";
@@ -10,23 +10,33 @@ export default function CallCard({ activity }) {
   const { patchArchive } = usePatchArchive();
   const isPM = Number(activity.time.split(":")[0]) >= 12;
   const dateFormatting = dayjs(activity.created_at).format("MMM DD, YYYY");
-  console.log(activity);
+  const callType = useMemo(() => {
+    if (activity.call_type === "missed") {
+      return "Missed";
+    } else if (activity.direction === "inbound") {
+      return "Incoming";
+    }
+
+    return "Outgoing";
+  }, [activity]);
 
   return (
     <>
       <div className="call-card-wrapper" onClick={() => setModalOn(!modalOn)}>
-        {activity.is_archived && (
-          <img className="archive-icon" src="./src/assets/ArchiveIcon.png" />
-        )}
         {activity.direction === "inbound" ? (
           <img src="./src/assets/ReceiveIcon.png" />
         ) : (
           <img src="./src/assets/SendIcon.png" />
         )}
         <div className="call-from-wrapper">
-          <strong>{activity.from}</strong>
-          {`Using via ${activity.via}`}
+          <strong
+            className={activity.call_type === "missed" ? "missed-call" : null}
+          >
+            {activity.from}
+          </strong>
+          <span>{`Using via ${activity.via}`}</span>
         </div>
+        <div className="archived">{activity.is_archived && "ARCHIVED"}</div>
         <div className="call-time-wrapper">
           {activity.time}
           <span>{isPM ? "PM" : "AM"}</span>
@@ -41,7 +51,7 @@ export default function CallCard({ activity }) {
               src="./src/assets/BackIcon.png"
             />
             <img
-              className="header-icon archive"
+              className="header-icon"
               onClick={() =>
                 patchArchive(
                   `/activities/${activity.id}`,
@@ -51,7 +61,7 @@ export default function CallCard({ activity }) {
               src={
                 activity.is_archived
                   ? "./src/assets/ArchiveIcon.png"
-                  : "./src/assets/ArchiveYetIcon.png"
+                  : "./src/assets/UnArchiveIcon.png"
               }
             />
           </div>
@@ -64,15 +74,18 @@ export default function CallCard({ activity }) {
         <div className="content-wrapper">
           <div className="content-card">
             <p>{dateFormatting}</p>
-            <div>
+            <div className="call-content">
               {activity.time}
-              <div>
-                {activity.direction === "inbound" ? "Incoming" : "Outcoming"}
-                {activity.duration}
+              <div className="call-info-content">
+                <span className={callType === "Missed" ? "missed" : null}>
+                  {callType} Call
+                </span>
+                {activity.call_type !== "missed" && (
+                  <span>{activity.duration} seconds</span>
+                )}
               </div>
             </div>
           </div>
-          <div className="content-card">{dateFormatting}</div>
         </div>
       </div>
     </>
