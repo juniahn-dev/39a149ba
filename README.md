@@ -1,5 +1,5 @@
 # Aircall demo video
-https://github.com/user-attachments/assets/25d5ecdf-60b4-48c9-b38e-bffcbd2e9c94
+https://github.com/user-attachments/assets/dbcfce2c-a8be-4f3e-abcf-c563a7d5c3a9
 
 ## Summary
 
